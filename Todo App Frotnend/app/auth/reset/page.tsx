@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { FormEvent, useState } from 'react';
+import { FormEvent, Suspense, useState } from 'react';
 import { apiRequest, ApiError } from '../../../src/lib/api';
 import { useToast } from '../../../src/components/ui/ToastProvider';
 import SidebarArt from '../../../src/components/ui/SidebarArt';
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const router = useRouter();
   const toast = useToast();
   const searchParams = useSearchParams();
@@ -100,5 +100,13 @@ export default function ResetPasswordPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={null}>
+      <ResetPasswordForm />
+    </Suspense>
   );
 }

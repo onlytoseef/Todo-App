@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, Suspense, useMemo, useState } from 'react';
 import { apiRequest, ApiError } from '../../../src/lib/api';
 import { useToast } from '../../../src/components/ui/ToastProvider';
 import SidebarArt from '../../../src/components/ui/SidebarArt';
 
-export default function VerifyPage() {
+function VerifyForm() {
   const router = useRouter();
   const toast = useToast();
   const searchParams = useSearchParams();
@@ -97,5 +97,13 @@ export default function VerifyPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function VerifyPage() {
+  return (
+    <Suspense fallback={null}>
+      <VerifyForm />
+    </Suspense>
   );
 }

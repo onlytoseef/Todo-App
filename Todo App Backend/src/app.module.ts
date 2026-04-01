@@ -9,6 +9,7 @@ import { MailModule } from './mail/mail.module';
 import { User } from './users/entities/user.entity';
 import { Otp } from './otp/entities/otp.entity';
 import { Todo } from './todo/entities/todo.entity';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { Todo } from './todo/entities/todo.entity';
     MailModule,
     AuthModule,
     TodoModule,
+    HealthModule,
   ],
 })
 export class AppModule {}
